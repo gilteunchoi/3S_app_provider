@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Register">
+
+    <EditText
+        android:id="@+id/wifissid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="wifissid"
+        android:layout_marginTop="50dp"/>
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/wifissid"/>
+    <Button
+        android:id="@+id/btnregister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/password"/>
+
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.loginsqlite;
+package com.example.serviceprovider;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.example.loginsqlite;
+package com.example.serviceprovider;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,17 +9,17 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button wifiregister, check;
+    Button registprovider, provideservice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        wifiregister = (Button) findViewById(R.id.btnwifiregister);
-        check = (Button) findViewById(R.id.checked);
+        registprovider = (Button) findViewById(R.id.btnRegistProvider);
+        provideservice = (Button) findViewById(R.id.btnProvideService);
 
-        wifiregister.setOnClickListener(new View.OnClickListener() {
+        registprovider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Register.class);
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        check.setOnClickListener(new View.OnClickListener() {
+        provideservice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

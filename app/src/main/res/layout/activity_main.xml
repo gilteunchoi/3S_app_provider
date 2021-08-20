@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/txtview"
-        android:layout_width="match_parent"
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:text="3S"
         android:textSize="50sp"/>
 
@@ -20,13 +20,12 @@
         android:id="@+id/btnRegistProvider"
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:layout_below="@+id/txtview"
         android:layout_marginTop="50dp"
         android:layout_marginHorizontal="10dp"
-        android:background="@drawable/roundbtn"
+        android:background="@drawable/roundbtn1"
         android:text="사용자 등록"
         android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/btnProvideService"
@@ -37,7 +36,6 @@
         android:background="@drawable/roundbtn2"
         android:text="서비스 제공"
         android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/btnRegistProvider"/>
+        android:textStyle="bold"/>
 
-</RelativeLayout>
+</LinearLayout>

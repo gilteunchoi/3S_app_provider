@@ -1,33 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="10dp"
     tools:context=".Register">
 
-    <EditText
-        android:id="@+id/wifissid"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="wifissid"
-        android:layout_marginTop="50dp"/>
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="위치명 :"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="password"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/wifissid"/>
+        <EditText
+            android:id="@+id/location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:hint="상세위치입력"
+            android:layout_toRightOf="@+id/textView"/>
+
+        <Button
+            android:id="@+id/btnregister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="등록"
+            android:layout_toRightOf="@+id/location"/>
+    </LinearLayout>
     <Button
-        android:id="@+id/btnregister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/password"/>
-
-</RelativeLayout>
+        android:id="@+id/btncreateregister"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/add"
+        android:text="추가"/>
+</LinearLayout>

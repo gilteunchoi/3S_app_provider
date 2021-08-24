@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="bottom"
-    tools:context=".WifiScan">
+    tools:context=".WifiScanActivity">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -27,12 +27,11 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/Start"
+        android:id="@+id/Get"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Start Scan"
+        android:text="Get Wifi"
         android:textSize="25dp"/>
-
 </LinearLayout>

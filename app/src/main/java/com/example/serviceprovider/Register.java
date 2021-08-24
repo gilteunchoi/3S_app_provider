@@ -31,8 +31,7 @@ public class Register extends AppCompatActivity {
                 if(location.equals(""))
                     Toast.makeText(Register.this, "Please enter right location", Toast.LENGTH_SHORT).show();
                 else{
-                    Toast.makeText(Register.this, "wifi scanning", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), WifiScan.class);
+                    Intent intent = new Intent(getApplicationContext(), WifiScanActivity.class);
                     startActivity(intent);
                 }
             }

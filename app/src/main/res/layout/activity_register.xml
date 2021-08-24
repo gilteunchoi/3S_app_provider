@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:text="위치명 :"
+            android:text="1번 :"
             android:textSize="20sp"
             android:textStyle="bold"/>
 

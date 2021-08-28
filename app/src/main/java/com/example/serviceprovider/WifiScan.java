@@ -1,8 +1,5 @@
 package com.example.serviceprovider;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,11 +16,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.List;
 
-public class WifiScanActivity extends AppCompatActivity {
+public class WifiScan extends AppCompatActivity {
 
     private TextView textView;
     private Button button;
@@ -31,8 +29,6 @@ public class WifiScanActivity extends AppCompatActivity {
     NewHandle handling = null;
     private boolean isthread = false;
     String wifiList;
-    String DataList;
-    int numberOfscans=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,20 +40,30 @@ public class WifiScanActivity extends AppCompatActivity {
         handling = new NewHandle();
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
+        // 5GHz 지원 여부 확인
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (wifiManager.is5GHzBandSupported()) {
+                Toast.makeText(this, "5g true", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "5g flase", Toast.LENGTH_SHORT).show();
+            }
+        }
         BroadcastReceiver wifiScanReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                boolean receiveSuccess = intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false);
+                boolean success = intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false);
 
-                if (receiveSuccess) {
+                if (success) {
                     handling.sendEmptyMessage(1);
                 } else {
                     handling.sendEmptyMessage(2);
                 }
             }
         };
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        getApplicationContext().registerReceiver(wifiScanReceiver, intentFilter);
 
-        setFilter(wifiScanReceiver);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +74,6 @@ public class WifiScanActivity extends AppCompatActivity {
                 } else {
                     isthread = true;
                     button.setText("STOP SCAN");
-                    Toast.makeText(WifiScanActivity.this, "wifi scanning", Toast.LENGTH_SHORT).show();
 
                     // Create AP Scan Thread
                     Thread thread1 = new Thread() {
@@ -94,14 +99,11 @@ public class WifiScanActivity extends AppCompatActivity {
                     thread1.start();
                 }
             }
+
+
         });
     }
 
-    private void setFilter(BroadcastReceiver wifiScanReceiver) {
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
-        getApplicationContext().registerReceiver(wifiScanReceiver, intentFilter);
-    }
 
     public void sendStringToServer(String url, String dataToSend){
         DataForServer dataForServer = new DataForServer(url, dataToSend);
@@ -128,6 +130,9 @@ public class WifiScanActivity extends AppCompatActivity {
             super.onPostExecute(s); //요청 결과
             TextView textView = (TextView)findViewById(R.id.textView);
             textView.setText(s);    // 결과 보이도록
+            Toast.makeText(WifiScan.this, "sent complete", Toast.LENGTH_SHORT).show();
+
+
         }
     }
 
@@ -140,21 +145,34 @@ public class WifiScanActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 
     class NewHandle extends Handler {
         int count;
-
         @Override
         public void handleMessage(@NonNull Message handlerMessage) {
             switch (handlerMessage.what) {
                 case 1:
                     List<ScanResult> results = wifiManager.getScanResults();
                     String tempText = "";
-                    String textToShow = "{\"ID\":\"40dfb246-0026-11ec-9a03-0242ac130003\"";
-                    count = 1;
+                    String textToShow = "{\"ID\":\"f96ecf5a-0020-11ec-9a03-0242ac130003\"";
+                    count = 0;
 
                     for (final ScanResult result : results) {
-                        if(count<11) {
+                        if(count<10) {
                             String SSID = result.SSID;
                             if (SSID.contains("AndroidHotspot")) {        //핫스팟 제거
                                 continue;
@@ -162,29 +180,23 @@ public class WifiScanActivity extends AppCompatActivity {
                             String BSSID = result.BSSID;
                             int RSSI = result.level;
 
-                            tempText = "," + "\"" + "BSSID" + "\"" + ":" + "\"" + BSSID + "\"" + "," + "\"" + "RSSI" + "\"" + ":" + "\"" + RSSI + "\"";
+                            tempText = "," + "\"" + "BSSID" + count + "\"" + ":" + "\"" + BSSID + "\"" + "," + "\"" + "RSSI" + count + "\"" + ":" + "\"" + RSSI + "\"";
                             textToShow += tempText;
                             count++;
                         }
+
                     }
-                    textView = (TextView) findViewById(R.id.textView);
-                    textView.setText(tempText);
-                    numberOfscans++;
                     textToShow+="}";
                     wifiList=textToShow;
-                    //sendStringToServer("http://52.78.131.107:8000/provider", wifiList);
-                    /*
-                    DataList+=wifiList;
-                    if(numberOfscans==10) {
-                        sendStringToServer("http://52.78.131.107:8000/provider", DataList);//서버로 보냄
-                        Toast.makeText(context.this,"sent complete",1);
-                    }*/
+                    final TextView textview_address = (TextView) findViewById(R.id.textView);
+                    textview_address.setText(wifiList);
+                    sendStringToServer("http://52.78.131.107:8000/user", wifiList);//신호전달
+
                     break;
                 case 2:
-                    //문제가 있을 때
+                    Toast.makeText(WifiScan.this, "Scan Fail", Toast.LENGTH_SHORT).show();
                     break;
             }
-            ;
         }
     }
 }

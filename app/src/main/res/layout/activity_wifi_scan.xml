@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="bottom"
-    tools:context=".WifiScanActivity">
+    tools:context=".WifiScan">
 
     <ScrollView
         android:id="@+id/scrollView"

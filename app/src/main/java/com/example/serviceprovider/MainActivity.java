@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            if (replyFromServer == "None"){
+            if (!replyFromServer.equals("None")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("서비스제공");
                 builder.setMessage("사용자가 "+replyFromServer+" 번 출구에 있습니다."); // 결과 보이도록

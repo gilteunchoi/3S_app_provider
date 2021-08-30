@@ -174,7 +174,7 @@ public class WifiScan extends AppCompatActivity {
                     List<ScanResult> results = wifiManager.getScanResults();
                     String tempText = "";
                     //+","+"\"method\""+":"+"\"look\""
-                    String textToShow = "{\"ID\":\"f96ecf5a-0020-11ec-9a03-0242ac130003\""+","+"\"method\""+":"+"\"scan\"";
+                    String textToShow = "{\"ID\":\"f96ecf5a-0020-11ec-9a03-0242ac130003\""+","+"\"method\""+":"+"\"scan\""+","+"\"location\""+":"+"\"look\"";
                     count = 0;
 
                     for (final ScanResult result : results) {

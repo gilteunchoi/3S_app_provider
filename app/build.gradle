@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.example.loginsqlite"
+        applicationId "com.example.serviceprovider"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1

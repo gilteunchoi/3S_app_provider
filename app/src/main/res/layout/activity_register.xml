@@ -9,7 +9,7 @@
     tools:context=".Register">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -21,7 +21,7 @@
         android:layout_marginTop="50dp">
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -49,6 +49,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearlayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -56,17 +57,17 @@
         android:layout_marginTop="50dp">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:text="상세위치 :"
+            android:text="1번 :"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/location"
+            android:id="@+id/location1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
@@ -75,13 +76,127 @@
             android:layout_toRightOf="@+id/textView"/>
 
         <Button
-            android:id="@+id/btnregister"
+            android:id="@+id/btnregister1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:text="등록"
-            android:layout_toRightOf="@+id/location"/>
+            android:layout_toRightOf="@+id/location1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="2번 :"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/location2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:hint="상세위치입력"
+            android:layout_toRightOf="@+id/textView2"/>
+
+        <Button
+            android:id="@+id/btnregister2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="등록"
+            android:layout_toRightOf="@+id/location2"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="3번 :"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/location3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:hint="상세위치입력"
+            android:layout_toRightOf="@+id/textView3"/>
+
+        <Button
+            android:id="@+id/btnregister3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="등록"
+            android:layout_toRightOf="@+id/location3"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="4번 :"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/location4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:hint="상세위치입력"
+            android:layout_toRightOf="@+id/textView4"/>
+
+        <Button
+            android:id="@+id/btnregister4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:text="등록"
+            android:layout_toRightOf="@+id/location4"/>
     </LinearLayout>
     <Button
         android:id="@+id/btncreateregister"

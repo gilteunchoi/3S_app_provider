@@ -29,13 +29,21 @@ public class WifiScan extends AppCompatActivity {
     NewHandle handling = null;
     private boolean isthread = false;
     String wifiList;
+    String DataList;
+    String num;
+    int numberOfscans = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wifi_scan);
 
-        textView = (TextView) findViewById(R.id.textView);
+        TextView re = (TextView)findViewById(R.id.result);
+        Intent intent = getIntent();
+        String ent = intent.getExtras().getString("entrance");
+        re.setText(ent);
+
+        textView = (TextView) findViewById(R.id.wifi);
         button = (Button) findViewById(R.id.Get);
         handling = new NewHandle();
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
@@ -99,8 +107,6 @@ public class WifiScan extends AppCompatActivity {
                     thread1.start();
                 }
             }
-
-
         });
     }
 
@@ -128,10 +134,9 @@ public class WifiScan extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s); //요청 결과
-            TextView textView = (TextView)findViewById(R.id.textView);
+            TextView textView = (TextView)findViewById(R.id.wifi);
             textView.setText(s);    // 결과 보이도록
             Toast.makeText(WifiScan.this, "sent complete", Toast.LENGTH_SHORT).show();
-
 
         }
     }
@@ -168,7 +173,8 @@ public class WifiScan extends AppCompatActivity {
                 case 1:
                     List<ScanResult> results = wifiManager.getScanResults();
                     String tempText = "";
-                    String textToShow = "{\"ID\":\"f96ecf5a-0020-11ec-9a03-0242ac130003\"";
+                    //+","+"\"method\""+":"+"\"look\""
+                    String textToShow = "{\"ID\":\"f96ecf5a-0020-11ec-9a03-0242ac130003\""+","+"\"method\""+":"+"\"scan\"";
                     count = 0;
 
                     for (final ScanResult result : results) {
@@ -188,10 +194,20 @@ public class WifiScan extends AppCompatActivity {
                     }
                     textToShow+="}";
                     wifiList=textToShow;
-                    final TextView textview_address = (TextView) findViewById(R.id.textView);
-                    textview_address.setText(wifiList);
-                    sendStringToServer("http://52.78.131.107:8000/user", wifiList);//신호전달
+                    numberOfscans++;
+                    num = Integer.toString(numberOfscans);
 
+                    final TextView textview_address = (TextView) findViewById(R.id.wifi);
+                    final TextView tv_num = (TextView) findViewById(R.id.num);
+
+                    textview_address.setText(wifiList);
+                    tv_num.setText(num);
+
+                    DataList += textToShow;
+
+                    if(numberOfscans==10) {
+                        sendStringToServer("http://52.78.131.107:8000/user", wifiList);//신호전달
+                    }
                     break;
                 case 2:
                     Toast.makeText(WifiScan.this, "Scan Fail", Toast.LENGTH_SHORT).show();

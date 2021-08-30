@@ -8,15 +8,21 @@
     android:gravity="bottom"
     tools:context=".WifiScan">
 
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50dp" />
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="660dp"
+        android:layout_height="600dp"
         android:gravity="top"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/wifi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
@@ -25,6 +31,12 @@
             android:textSize="25dp"
             android:textColor="@android:color/black"/>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/num"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="numOfscan"/>
 
     <Button
         android:id="@+id/Get"

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".WifiScan">
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/wifi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="Wifi"
+            android:textSize="30dp"
+            android:textColor="@android:color/black"/>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="306dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:src="@drawable/ic_launcher_background"></ImageView>
+
+    <TextView
+        android:id="@+id/num"
+        android:layout_width="match_parent"
+        android:layout_height="239dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/Get"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Get Wifi"
+        android:textSize="25sp"/>
+</LinearLayout>
